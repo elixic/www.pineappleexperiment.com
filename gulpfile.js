@@ -63,7 +63,6 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('copy', [
-    'copy:.htaccess',
     'copy:index.html',
     'copy:jquery',
     'copy:main.css',
@@ -106,6 +105,11 @@ gulp.task('copy:misc', function () {
 
         // Copy all files
         dirs.src + '/**/*',
+
+        // Exclude git ignore dev tool files
+        '!' + dirs.src + '.editorconfig',
+        '!' + dirs.src + '/**/.gitignore',
+        '!' + dirs.src + '.gitattributes',
 
         // Exclude the following files
         // (other tasks will handle the copying of these files)
